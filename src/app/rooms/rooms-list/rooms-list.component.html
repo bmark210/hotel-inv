@@ -1,0 +1,28 @@
+<p>rooms-list component</p>
+<div *ngIf="rooms && rooms.length; else noRooms">
+  <table class="table">
+    <tr>
+      <th>Room Number</th>
+      <th>Room type</th>
+      <th>Amenities</th>
+      <th>Price</th>
+      <th>Check in</th>
+    </tr>
+    <tr
+      [ngClass]="{ even: e, odd: o }"
+      *ngFor="let room of rooms; let e = even; let o = odd"
+    >
+      <th>{{ room.roomNumber }}</th>
+      <th>{{ room.roomType }}</th>
+      <span *ngFor="let amenity of room.amenities">
+        {{ amenity }}
+      </span>
+      <th>{{ room.price | currency : "USD" }}</th>
+      <th>{{ room.checkIn | date : "dd/MM/yyyy" }}</th>
+    </tr>
+  </table>
+</div>
+<button hinvCustomDerective>console log</button>
+<ng-template #noRooms>
+  <p>There are no rooms available</p>
+</ng-template>
