@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { RoomList } from '../rooms';
 
 @Component({
@@ -8,8 +8,9 @@ import { RoomList } from '../rooms';
 })
 export class RoomsListComponent {
   @Input() rooms: RoomList[] = [];
-  OnInit(): void {
-    console.log(this.rooms);
+  @Output() roomSelected = new EventEmitter<RoomList>();
+  selectRoom(room: RoomList) {
+    this.roomSelected.emit(room);
   }
 
   constructor() {}

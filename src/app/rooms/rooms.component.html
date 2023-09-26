@@ -1,2 +1,7 @@
 <p>Welcome to {{ hotelName }}</p>
-<hinv-rooms-list [rooms]="roomList"></hinv-rooms-list>
+<p *ngIf="slectedRoom">{{ slectedRoom | json }}</p>
+<hinv-rooms-list
+  [rooms]="roomList"
+  (roomSelected)="selectRoom($event)"
+></hinv-rooms-list>
+<button (click)="addNewRoom()">Add new room</button>

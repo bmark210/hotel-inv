@@ -1,9 +1,3 @@
-export interface Rooms {
-  totalRooms: number;
-  availableRooms: number;
-  bookedRooms: number;
-}
-
 export interface RoomList {
   roomNumber: number;
   roomType: string;
@@ -12,4 +6,6 @@ export interface RoomList {
   photos: string[];
   checkIn: Date;
   checkOut: Date;
+  rate: number;
+  selected?: boolean;
 }

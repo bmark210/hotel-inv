@@ -10,6 +10,27 @@ export class RoomsComponent implements OnInit {
   hotelName = 'Hotel Colorado';
 
   roomList: RoomList[] = [];
+  slectedRoom!: RoomList;
+  selectRoom(room: RoomList): void {
+    this.slectedRoom = room;
+  }
+
+  addNewRoom(): void {
+    const room = {
+      roomNumber: 1,
+      roomType: 'Single',
+      amenities: ['Wifi', 'Air Conditioning', 'Heating'],
+      price: 100,
+      photos: [
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQS_DFbqY3yZbWhQ3Vez2y6LBwjqskIEWB2PIxV4ogC6w&s',
+      ],
+      checkIn: new Date('2020-01-01'),
+      checkOut: new Date('2020-01-02'),
+      rate: 4,
+    };
+    this.roomList.push(room);
+  }
+
   ngOnInit(): void {
     this.roomList = [
       {
@@ -22,6 +43,7 @@ export class RoomsComponent implements OnInit {
         ],
         checkIn: new Date('2020-01-01'),
         checkOut: new Date('2020-01-02'),
+        rate: 4,
       },
       {
         roomNumber: 2,
@@ -33,6 +55,7 @@ export class RoomsComponent implements OnInit {
         ],
         checkIn: new Date('2020-01-01'),
         checkOut: new Date('2020-01-02'),
+        rate: 5,
       },
       {
         roomNumber: 3,
@@ -44,6 +67,7 @@ export class RoomsComponent implements OnInit {
         ],
         checkIn: new Date('2020-01-01'),
         checkOut: new Date('2020-01-02'),
+        rate: 3,
       },
       {
         roomNumber: 4,
@@ -55,6 +79,7 @@ export class RoomsComponent implements OnInit {
         ],
         checkIn: new Date('2020-01-01'),
         checkOut: new Date('2020-01-02'),
+        rate: 2,
       },
     ];
   }
