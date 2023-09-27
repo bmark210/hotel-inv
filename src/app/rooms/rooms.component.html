@@ -1,7 +1,11 @@
-<p>Welcome to {{ hotelName }}</p>
+<!-- <p>Welcome to {{ hotelName }}</p> -->
+<hinv-header></hinv-header>
 <p *ngIf="slectedRoom">{{ slectedRoom | json }}</p>
-<hinv-rooms-list
+<hinv-rooms-list *ngIf="hideRoomsList"
   [rooms]="roomList"
+  [title]="title"
   (roomSelected)="selectRoom($event)"
 ></hinv-rooms-list>
+<button (click)="hideRoomsList = !hideRoomsList">Hide Rooms</button>
 <button (click)="addNewRoom()">Add new room</button>
+{{ headerComponent.title }}

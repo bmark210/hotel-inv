@@ -7,9 +7,12 @@ import { RoomsComponent } from './rooms/rooms.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CustomDirective } from './custom-derective.directive';
 import { RoomsListComponent } from './rooms/rooms-list/rooms-list.component';
+import { HeaderComponent } from './header/header.component';
+import { ContainerComponent } from './container/container.component';
+import { EmployeeComponent } from './employee/employee.component';
 
 @NgModule({
-  declarations: [AppComponent, RoomsComponent, CustomDirective, RoomsListComponent],
+  declarations: [AppComponent, RoomsComponent, CustomDirective, RoomsListComponent, HeaderComponent, ContainerComponent, EmployeeComponent],
   imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule],
   providers: [],
   bootstrap: [AppComponent],
