@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "freeCodeCamoCourseAngular": {
+    "hotelinventoryapp": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -58,10 +58,11 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "freeCodeCamoCourseAngular:build:production"
+              "browserTarget": "hotelinventoryapp:build:production"
             },
             "development": {
-              "browserTarget": "freeCodeCamoCourseAngular:build:development"
+              "browserTarget": "hotelinventoryapp:build:development",
+              "proxyConfig": "src/proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"
@@ -69,7 +70,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "freeCodeCamoCourseAngular:build"
+            "browserTarget": "hotelinventoryapp:build"
           }
         },
         "test": {

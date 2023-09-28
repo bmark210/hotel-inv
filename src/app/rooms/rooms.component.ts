@@ -2,6 +2,7 @@ import { RoomsService } from './services/rooms.service';
 import { Component, DoCheck, ViewChild, OnInit } from '@angular/core';
 import { RoomList } from './rooms';
 import { HeaderComponent } from '../header/header.component';
+import { Observable, filter, map } from 'rxjs';
 // view child , templateRef , dinamic load component
 @Component({
   selector: 'hinv-rooms',
@@ -19,18 +20,17 @@ export class RoomsComponent implements OnInit, DoCheck {
   hideRoomsList = true;
   addNewRoom(): void {
     const room = {
-      roomNumber: 1,
+      roomNumber: '1',
       roomType: 'Single',
-      amenities: ['Wifi', 'Air Conditioning', 'Heating'],
+      amenities: 'Wifi, Air Conditioning, Heating',
       price: 100,
-      photos: [
+      photos:
         'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQS_DFbqY3yZbWhQ3Vez2y6LBwjqskIEWB2PIxV4ogC6w&s',
-      ],
       checkIn: new Date('2020-01-01'),
       checkOut: new Date('2020-01-02'),
       rate: 4,
     };
-    this.roomList = [...this.roomList, room];
+    // this.roomList = [...this.roomList, room];
   }
 
   ngDoCheck(): void {
@@ -59,6 +59,39 @@ export class RoomsComponent implements OnInit, DoCheck {
 
   ngOnInit(): void {
     // метод срабатывает до игициализации предстовления
-    this.roomList = this.roomsService.getRooms();
+    this.roomsService.getRooms().subscribe((data) => {
+      this.roomList = data;
+    });
+  }
+
+  // stream$ = new Observable<number>((obs) => {
+  //   obs.next(1);
+  //   obs.next(2);
+  //   obs.next(3);
+  // })
+  //   .pipe(
+  //     map((i) => {
+  //       return i * 2;
+  //     }),
+  //     filter((i) => i % 2 === 0)
+  //   )
+  //   .subscribe({
+  //     next: (i) => console.log(i),
+  //   }).unsubscribe();
+  startObservable(): void {
+    const myObservable = new Observable<number>((observer) => {
+      observer.next(1);
+      observer.next(2);
+      observer.next(3);
+      observer.complete();
+    });
+
+    const myObserver = {
+      next: (value: any) => console.log(value),
+      error: (error: any  ) => console.error(error),
+      complete: () => console.log('Завершено'),
+    };
+
+    myObservable.subscribe(myObserver);
   }
 }

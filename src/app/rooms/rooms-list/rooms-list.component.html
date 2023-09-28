@@ -15,12 +15,12 @@
     >
       <th>{{ room.roomNumber }}</th>
       <th>{{ room.roomType }}</th>
-      <span *ngFor="let amenity of room.amenities">
-        {{ amenity }}
-      </span>
+      <th>
+        {{ room.amenities }}
+      </th>
       <th>{{ room.price | currency : "USD" }}</th>
-      <th>{{ room.checkIn | date : "dd/MM/yyyy" }}</th>
-      <th>{{ room.rate | number : "1.2-2" }}</th>
+      <th>{{ room.checkinTime | date : "dd/MM/yyyy" }}</th>
+      <th>{{ room.rating | number : "1.2-2" }}</th>
       <th>
         <button class="btn btn-secondary" (click)="selectRoom(room)">
           Select

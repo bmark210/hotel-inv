@@ -1,11 +1,11 @@
 export interface RoomList {
-  roomNumber: number;
+  roomNumber: string;
   roomType: string;
-  amenities: string[];
+  amenities: string;
   price: number;
-  photos: string[];
-  checkIn: Date;
-  checkOut: Date;
-  rate: number;
+  photos: string;
+  checkinTime: string;
+  checkoutTime: string;
+  rating: number;
   selected?: boolean;
 }
